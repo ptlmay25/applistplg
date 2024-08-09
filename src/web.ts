@@ -1,10 +1,9 @@
 import { WebPlugin } from '@capacitor/core';
-
-import type { AppListPluginPlugin } from './definitions';
+import type { AppListPluginPlugin, AppInfo } from './definitions';
 
 export class AppListPluginWeb extends WebPlugin implements AppListPluginPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async getInstalledApps(): Promise<{ apps: AppInfo[] }> {
+    console.warn('getInstalledApps is not available in the browser');
+    return { apps: [] };
   }
 }

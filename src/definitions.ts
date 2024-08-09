@@ -1,3 +1,10 @@
+export interface AppInfo {
+  packageName: string;
+  appName: string;
+  versionName: string;
+  versionCode: number;
+}
+
 export interface AppListPluginPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  getInstalledApps(): Promise<{ apps: AppInfo[] }>;
 }

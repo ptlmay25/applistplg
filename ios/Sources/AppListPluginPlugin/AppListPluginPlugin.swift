@@ -10,14 +10,18 @@ public class AppListPluginPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "AppListPluginPlugin"
     public let jsName = "AppListPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getInstalledApps", returnType: CAPPluginReturnPromise)
     ]
-    private let implementation = AppListPlugin()
 
     @objc func echo(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
         call.resolve([
-            "value": implementation.echo(value)
+            "value": value
         ])
+    }
+
+    @objc func getInstalledApps(_ call: CAPPluginCall) {
+        call.unimplemented("Not available on iOS")
     }
 }
